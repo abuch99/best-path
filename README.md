@@ -1,2 +1,2 @@
 # best-path
-Find best path using two cities using A* algorithm
+Find best path between two cities using A* algorithm
