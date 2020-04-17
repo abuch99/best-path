@@ -1,2 +1,5 @@
 Pipfile
 Pipfile.lock
+edges.csv
+places.csv
+.vscode/
