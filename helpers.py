@@ -21,6 +21,23 @@ def geoloc(sendurl):
         print("Wrong")
     return []
 
+def getjson(nodedict):
+    data=[]
+    jsondata = {}
+    for key in nodedict:
+        temp={}
+        if key == 'RGIA':
+            temp['latitude']=nodedict[key][0]
+            temp['longitude']= nodedict[key][1]
+            jsondata['destinations']=temp
+        else:
+            temp['latitude']=nodedict[key][0]
+            temp['longitude']=nodedict[key][1]
+            data.append(temp)
+
+    jsondata['origins']=data
+    return jsondata
+
 def openFiles():
     with open(places, encoding='utf-8-sig') as fileplace:
         placereader=csv.reader(fileplace)
