@@ -3,3 +3,5 @@ Pipfile.lock
 edges.csv
 places.csv
 .vscode/
+__pycache__/
+config.ini

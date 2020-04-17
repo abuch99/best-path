@@ -36,7 +36,11 @@ def getjson(nodedict):
             data.append(temp)
 
     jsondata['origins']=data
+    json.dumps(jsondata)
     return jsondata
+
+def distanceMatrix(nodedict):
+    jsondata=getjson(nodedict)    
 
 def openFiles():
     with open(places, encoding='utf-8-sig') as fileplace:

@@ -24,7 +24,6 @@ g=Graph()
 for item in edges:
     g.addEdge(item)
 
-
 jsondata = getjson(nodedict)
 json.dumps(jsondata)
 print(jsondata)
