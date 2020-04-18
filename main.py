@@ -13,10 +13,12 @@ for item in edges:
     g.addEdge(item)
 
 g_edges = g.getEdges()
-print(len(g_edges))
 durations = durationList(nodes,nodedict, g_edges)
 
+for items in nodes:
+    durations[(items,items)]=0
 start='Birla Institute of Technology Hyderabad'
 end='RGIA'
 
-# path = aStar(g,nodedict,durations,start,end)
+path = aStar(g,nodedict,durations,start,end)
+print(path)
