@@ -1,13 +1,13 @@
-RGIA,Gangaram
+RGIA,Gangaram Hyderabad Chandra Nagar
 RGIA,Kurmaguda
 RGIA,Rajendranagar Mandal
 RGIA,Kismatpur
-Gangaram,Kurmaguda
-Kurmaguda,Kothapet Village
+Gangaram Hyderabad Chandra Nagar,Kurmaguda
+Kurmaguda,Kothapet Village Hyderabad
 Kurmaguda,Sivarampalli
 Rajendranagar Mandal,Sivarampalli
-Sivarampalli,Kothapet Village
-Kothapet Village,L B Nagar
+Sivarampalli,Kothapet Village Hyderabad
+Kothapet Village Hyderabad,L B Nagar
 Sivarampalli,Attapur
 Rajendranagar Mandal,Attapur
 Kismatpur,Attapur
@@ -44,25 +44,25 @@ L B Nagar,Nagole
 Nagole,Uppal
 Bakaram,Uppal
 Uppal,Pocharam
-Nagole,Daira
-Daira,Pocharam
+Nagole,Daira Hyderabad
+Daira Hyderabad,Pocharam
 Uppal,Moula Ali
 Pocharam,Kapra
 Pocharam,Dammaiguda
 Moula Ali,Kapra
 Kapra,Dammaiguda
-Dammaiguda,BITS Hyderabad
+Dammaiguda,Birla Institute of Technology Hyderabad
 Kapra,Sainikpuri
 Moula Ali,Sainikpuri
 Moula Ali,Yapral
-Sainikpuri,BITS Hyderabad
+Sainikpuri,Birla Institute of Technology Hyderabad
 Malkajgiri,Yapral
-Yapral,BITS Hyderabad
-Trimulgherry,Kompally
-Kompally,Old Alwal
+Yapral,Birla Institute of Technology Hyderabad
+Trimulgherry,Kompally Hyderabad
+Kompally Hyderabad,Old Alwal
 Old Alwal,Alwal
-Alwal,BITS Hyderabad
+Alwal,Birla Institute of Technology Hyderabad
 Alwal,Bolarum
-Bolarum,BITS Hyderabad
+Bolarum,Birla Institute of Technology Hyderabad
 Bolarum,Medchal
-Medchal,BITS Hyderabad
+Medchal,Birla Institute of Technology Hyderabad

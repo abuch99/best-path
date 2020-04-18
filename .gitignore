@@ -5,3 +5,5 @@ places.csv
 .vscode/
 __pycache__/
 config.ini
+dict.json
+duration.json
