@@ -6,4 +6,4 @@ places.csv
 __pycache__/
 config.ini
 dict.json
-duration.json
+durationsPickle

@@ -2,20 +2,17 @@ import urllib.parse
 import configparser
 import json as JSON
 from os import path
-from helpers import geoloc,openFiles,distanceMatrix
+from helpers import geoloc,openFiles,durationMatrix
 from graph import Graph
+import pickle
 
-config = configparser.ConfigParser()
-config.read('config.ini')
-key=config['bing']['key']
 
 def nodeList(nodes):
     nodedict=dict()
     if not path.exists('dict.json'):
         for item in nodes:
-            urllib.parse.quote(item)
-            url='http://dev.virtualearth.net/REST/v1/Locations?query='+item+'&key='+key
-            nodedict[item]=geoloc(url)
+            urllib.parse.quote(item)   
+            nodedict[item]=geoloc(item)
 
         json = JSON.dumps(nodedict)
         f = open("dict.json","w")
@@ -28,22 +25,37 @@ def nodeList(nodes):
 
     return nodedict
 
-def durationList(nodes, nodedict):
-    if not path.exists('duration.json'):
-        sendurl='https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?key='+key
-        matrix=distanceMatrix(sendurl, nodedict)
+def durationList(nodes, nodedict, g_edges):
+    if not path.exists('durationsPickle'):
         durations={}
-        for name,time in zip(nodes, matrix):
-            durations[name]=time
+        for start,end in g_edges:
+            print(start+'|')    
+            print(end)
+            matrix=durationMatrix(nodedict, start, end)  
+            t=(start,end)          
+            durations[t]=matrix[0]
+            # print(durations)
+        
+        for item in nodes:         
+            if item=='RGIA':
+                continue
 
-        json = JSON.dumps(durations)
-        f = open("duration.json","w")
-        f.write(json)
-        f.close()
+            end = "RGIA"
+            start=item
+            matrix=durationMatrix(nodedict, start, end)  
+            t=(start,end)          
+            durations[t]=matrix[0]
+            matrix=durationMatrix(nodedict, end, start)
+            t=(end,start)          
+            durations[t]=matrix[0]
+
+        dbfile = open('durationsPickle', 'ab')
+        pickle.dump(durations, dbfile)
+        dbfile.close()
 
     else:
-        with open('duration.json', 'r') as f:
-            durations=JSON.load(f)
+        dbfile = open('durationsPickle', 'rb')
+        durations = pickle.load(dbfile)
     
     return durations
 
@@ -52,6 +64,4 @@ def init():
     nodes = data[0]
     edges = data[1]
     nodedict = nodeList(nodes)
-    durations = durationList(nodes,nodedict)
-
-    return (nodes, edges, nodedict, durations)
+    return (nodes, edges, nodedict)

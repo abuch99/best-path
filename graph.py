@@ -1,5 +1,5 @@
 class Graph:
-    def __init__(self,gdict=None):
+    def __init__(self, gdict=None):
         if gdict is None:
             gdict = {}
         self.gdict = gdict
@@ -20,8 +20,16 @@ class Graph:
             (v1, v2) = tuple(edge)
             if v1 in self.gdict:
                 self.gdict[v1].append(v2)
-            elif v1 not in self.gdict:
+                if v2 not in self.gdict:
+                    self.gdict[v2] = [v1]
+                else:
+                    self.gdict[v2].append(v1)
+            else:
                 self.gdict[v1] = [v2]
-            if v2 not in self.gdict:
-                self.gdict[v2] = []
+                if v2 not in self.gdict:
+                    self.gdict[v2] = [v1]
+                else:
+                    self.gdict[v2].append(v1)
 
+    def getGraph(self):
+        return self.gdict
