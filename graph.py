@@ -7,6 +7,14 @@ class Graph:
     def getVertices(self):
         return list(self.gdict.keys())
 
+    def getEdges(self):
+        edges=[]
+        for key,value in self.gdict.items():
+            for node in value:
+                temp=(key,node)
+                edges.append(temp)
+        return edges
+
     def addEdge(self, edge):
             edge = set(edge)
             (v1, v2) = tuple(edge)
