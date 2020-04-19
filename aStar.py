@@ -25,20 +25,16 @@ def aStar(graph,nodedict, durations,start,end):
     closed_list=[]
     graph_dict=graph.getGraph()
 
-    # for key, value in graph_dict.items():
-    #     print (key + ' | ' + str(graph_dict[key]))
-    #     print('-----------')
     open_list.append(start_node)
-    count=0
     while(len(open_list)>0):
 
         open_list.sort()
         current_node = open_list.pop(0)
         closed_list.append(current_node)
+        
         # If RGIA is found
         print(current_node)
         if current_node.position == end_node.position:
-            print('entered')
             path = []
             current = current_node
             while current is not None:
@@ -71,9 +67,5 @@ def aStar(graph,nodedict, durations,start,end):
                 child.f = child.g + child.h
                 child.parent=current_node
                 open_list.append(child)
-        count+=1
-            # print(source,dest)
-            # print(child.f)
-            # print('----------')
+
     raise ValueError('No Path Found')
-    return []

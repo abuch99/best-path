@@ -9,7 +9,7 @@ import pickle
 
 def nodeList(nodes):
     nodedict=dict()
-    if not path.exists('dict.json'):
+    if not path.exists('docs/dict.json'):
         for item in nodes:
             urllib.parse.quote(item)   
             nodedict[item]=geoloc(item)
@@ -20,13 +20,13 @@ def nodeList(nodes):
         f.close()
 
     else:
-        with open('dict.json', 'r') as f:
+        with open('docs/dict.json', 'r') as f:
             nodedict=JSON.load(f)
 
     return nodedict
 
 def durationList(nodes, nodedict, g_edges):
-    if not path.exists('durationsPickle'):
+    if not path.exists('docs/durationsPickle'):
         durations={}
         for start,end in g_edges:
             print(start+'|')    
@@ -49,12 +49,12 @@ def durationList(nodes, nodedict, g_edges):
             t=(end,start)          
             durations[t]=matrix[0]
 
-        dbfile = open('durationsPickle', 'ab')
+        dbfile = open('docs/durationsPickle', 'ab')
         pickle.dump(durations, dbfile)
         dbfile.close()
 
     else:
-        dbfile = open('durationsPickle', 'rb')
+        dbfile = open('docs/durationsPickle', 'rb')
         durations = pickle.load(dbfile)
     
     return durations

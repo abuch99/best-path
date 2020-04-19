@@ -5,13 +5,13 @@ import json
 import configparser
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('docs/config.ini')
 key=config['bing']['key']
 
 nodes = []
 edges = []
-places = "places.csv"
-conn = "edges.csv"
+places = "data/places.csv"
+conn = "data/edges.csv"
 
 def geoloc(item):
     sendurl='http://dev.virtualearth.net/REST/v1/Locations?query='+item+'&key='+key
@@ -51,7 +51,6 @@ def getjson(nodedict, start=False, dest=False):
 def durationMatrix(nodedict, start=False,dest=False):
     sendurl='https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?key='+key
     jsondata=getjson(nodedict,start,dest)   
-    # print(jsondata)
     r = requests.post(url=sendurl, data=jsondata)
     try:
         j=json.loads(r.text)
