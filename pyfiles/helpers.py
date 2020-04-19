@@ -3,6 +3,7 @@ import urllib.parse
 import requests
 import json 
 import configparser
+import gmplot
 
 config = configparser.ConfigParser()
 config.read('docs/config.ini')
@@ -80,3 +81,17 @@ def openFiles():
             edges.append(edge)
 
     return (nodes,edges)
+
+def mapNodes(path, nodedict):
+    latitudes=[]
+    longitudes=[]
+
+    for items in path:
+        latitudes.append(nodedict[items][0])
+        longitudes.append(nodedict[items][1]) 
+
+    gmap = gmplot.GoogleMapPlotter(17.3850, 78.4867,13)  
+
+    gmap.plot(latitudes,longitudes,'blue', edge_width=2.5)
+    gmap.draw('bloat/map.html')
+    

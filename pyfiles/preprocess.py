@@ -2,8 +2,8 @@ import urllib.parse
 import configparser
 import json as JSON
 from os import path
-from helpers import geoloc,openFiles,durationMatrix
-from graph import Graph
+from .helpers import geoloc,openFiles,durationMatrix
+from .graph import Graph
 import pickle
 
 
@@ -15,7 +15,7 @@ def nodeList(nodes):
             nodedict[item]=geoloc(item)
 
         json = JSON.dumps(nodedict)
-        f = open("dict.json","w")
+        f = open("docs/dict.json","w")
         f.write(json)
         f.close()
 
@@ -49,7 +49,7 @@ def durationList(nodes, nodedict, g_edges):
             t=(end,start)          
             durations[t]=matrix[0]
 
-        dbfile = open('docs/durationsPickle', 'ab')
+        dbfile = open('docs/durationsPickle', 'wb')
         pickle.dump(durations, dbfile)
         dbfile.close()
 

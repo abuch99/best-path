@@ -1,6 +1,7 @@
-from graph import Graph
-from preprocess import init,durationList
-from aStar import aStar
+from pyfiles.graph import Graph
+from pyfiles.preprocess import init,durationList
+from pyfiles.aStar import aStar
+from pyfiles.helpers import mapNodes
 
 data=init()
 nodes=data[0]
@@ -22,9 +23,15 @@ start='Birla Institute of Technology Hyderabad'
 end='RGIA'
 
 path = aStar(g,nodedict,durations,start,end)
-print(path)
 
+print('PATH')
+print('****************************')
+for item in path:
+    print (item)
+print('****************************')
+print()
 # with open('path.txt','w') as f:
 #     for item in path:
 #         f.write(str(item))
 #         f.write("\n")
+mapNodes(path,nodedict)
